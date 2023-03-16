@@ -1,11 +1,11 @@
 {
 	"private": true,
 	"scripts": {
-		"dev": "GOOGLE_APPLICATION_CREDENTIALS=\"./flowley-test-880d49cc6785.json\" next dev",
-		"build": "GOOGLE_APPLICATION_CREDENTIALS=\"./flowley-test-880d49cc6785.json\" next build",
-		"export": "GOOGLE_APPLICATION_CREDENTIALS=\"./flowley-test-880d49cc6785.json\" next export",
-		"start": "GOOGLE_APPLICATION_CREDENTIALS=\"./flowley-test-880d49cc6785.json\" next start",
-		"lint": "GOOGLE_APPLICATION_CREDENTIALS=\"./flowley-test-880d49cc6785.json\" next lint",
+		"dev": "next dev",
+		"build": "next build",
+		"export": "next export",
+		"start": "next start",
+		"lint": "next lint",
 		"format": "prettier '{components,pages,src,interfaces,hooks}/**/*.{tsx,ts,js}' --write"
 	},
 	"dependencies": {
@@ -15,6 +15,7 @@
 		"chart.js": "^3.9.1",
 		"firebase-admin": "^11.5.0",
 		"formik": "^2.2.9",
+		"google-auth-library": "^8.7.0",
 		"next": "^13.0.4",
 		"numeral": "^2.0.6",
 		"react": "^18.2.0",

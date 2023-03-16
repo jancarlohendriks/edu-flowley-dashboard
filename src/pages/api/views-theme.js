@@ -1,6 +1,15 @@
 /* eslint @typescript-eslint/no-var-requires: "off" */
+// const { GoogleAuth } = require('google-auth-library')
 const { BetaAnalyticsDataClient } = require('@google-analytics/data')
-const analyticsDataClient = new BetaAnalyticsDataClient()
+
+const file = require('@/lib/credentials.json')
+
+const analyticsDataClient = new BetaAnalyticsDataClient({
+  credentials: {
+    client_email: file.client_email,
+    private_key: file.private_key,
+  },
+})
 
 const PROPERTY_ID = '353724991'
 const startDate = '7daysAgo'
@@ -23,4 +32,6 @@ export default async function handler(req, res) {
     })
     .then((res) => res[0].rows)
   res.status(200).json({ response })
+  // const test = process.env.GA_PRIVATE_KEY
+  // res.status(200).send({ file })
 }
