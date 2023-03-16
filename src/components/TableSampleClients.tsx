@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import { useSampleThemes } from '../hooks/sampleData'
-import { Theme } from '../interfaces'
+import React, { useState } from 'react'
 import BaseButton from './BaseButton'
 import BaseButtons from './BaseButtons'
 
@@ -19,15 +17,15 @@ const TableSampleClients = ({ clients }: any) => {
   //   },
   // ]
 
-  clients.sort((a, b) => b.company - a.company)
+  clients?.sort((a: any, b: any) => b.company - a.company)
 
   const perPage = 5
 
   const [currentPage, setCurrentPage] = useState(0)
 
-  const clientsPaginated = clients.slice(perPage * currentPage, perPage * (currentPage + 1))
+  const clientsPaginated = clients?.slice(perPage * currentPage, perPage * (currentPage + 1))
 
-  const numPages = clients.length / perPage
+  const numPages = clients?.length / perPage
 
   const pagesList = []
 

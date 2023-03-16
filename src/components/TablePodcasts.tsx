@@ -1,10 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import { useSampleThemes } from '../hooks/sampleData'
-import { Theme } from '../interfaces'
+import React, { useState } from 'react'
 import BaseButton from './BaseButton'
 import BaseButtons from './BaseButtons'
-import CardBoxModal from './CardBoxModal'
-import { GetServerSideProps, GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 
 const TablePodcasts = ({ clients }: any) => {
   // const { clients } = useSampleThemes()
@@ -46,15 +42,15 @@ const TablePodcasts = ({ clients }: any) => {
   //   },
   // ]
 
-  clients.sort((a, b) => b.avgRating - a.avgRating)
+  clients?.sort((a: any, b: any) => b.avgRating - a.avgRating)
 
   const perPage = 5
 
   const [currentPage, setCurrentPage] = useState(0)
 
-  const clientsPaginated = clients.slice(perPage * currentPage, perPage * (currentPage + 1))
+  const clientsPaginated = clients?.slice(perPage * currentPage, perPage * (currentPage + 1))
 
-  const numPages = clients.length / perPage
+  const numPages = clients?.length / perPage
 
   const pagesList = []
 
