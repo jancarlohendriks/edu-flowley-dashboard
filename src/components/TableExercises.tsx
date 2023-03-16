@@ -3,7 +3,6 @@ import { useSampleThemes } from '../hooks/sampleData'
 import { Theme } from '../interfaces'
 import BaseButton from './BaseButton'
 import BaseButtons from './BaseButtons'
-import CardBoxModal from './CardBoxModal'
 
 const TableExercises = ({ clients }: any) => {
   // const { clients } = useSampleThemes()
@@ -45,7 +44,7 @@ const TableExercises = ({ clients }: any) => {
   //   },
   // ]
 
-  clients.sort((a, b) => b.avgRating - a.avgRating)
+  clients.sort((a: any, b: any) => b.avgRating - a.avgRating)
 
   const perPage = 5
 

@@ -103,10 +103,10 @@ export const getServerSideProps: GetServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
   const v = await fetch(`http://${context.req.headers.host}/api/views-platform`)
-  const views: Object = await v.json()
+  const views: any = await v.json()
 
   const t = await fetch(`http://${context.req.headers.host}/api/views-theme`)
-  const themes: Object = await t.json()
+  const themes: any = await t.json()
 
   return {
     props: {

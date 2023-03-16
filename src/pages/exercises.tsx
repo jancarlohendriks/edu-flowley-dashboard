@@ -36,7 +36,7 @@ export const getServerSideProps: GetServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
   const res = await fetch(`http://${context.req.headers.host}/api/rating-exercises?entity=fontys`)
-  const posts: Object = await res.json()
+  const posts: any = await res.json()
 
   return {
     props: {
