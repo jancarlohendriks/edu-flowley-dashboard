@@ -22,13 +22,14 @@ const groupItemsByToolId = (list) =>
   }, {})
 
 export default async function handler(req, res) {
-  const db = admin.database()
-  const ref = db.ref('entities')
+  try {
+    const db = admin.database()
+    const ref = db.ref('entities')
 
-  ref.once('value', (snap) => {
-    const entity = snap.val()[req.query.entity]
+    if (!req.query.entity) res.status(400).end()
 
-    if (entity) {
+    await ref.once('value', (snap) => {
+      const entity = snap.val()[req.query.entity]
       const allRatings = Object.values(entity.ratings)
       const ratingsByGroup = groupItemsByThemeId(allRatings)
 
@@ -40,27 +41,8 @@ export default async function handler(req, res) {
         .filter((theme) => theme.theme !== 'undefined')
 
       res.status(200).json(ratings)
-    }
-
-    res.status(200).json({ error: 'no entity found, add ?entity=ENTITY_NAME' })
-  })
+    })
+  } catch (e) {
+    res.status(400).end()
+  }
 }
-
-// import admin from "@/lib/firebase";
-
-// export default async function handler(req, res) {
-//   const db = admin.database();
-//   const ref = db.ref("entities");
-
-//   ref.once("value", (snap) => {
-//     const entity = snap.val()[req.query.entity];
-
-//     const ratings = Object.values(entity.ratings).map((rating) => rating.grade);
-
-//     const avgOfRatings =
-//       ratings.reduce((a, b) => a + b, 0) / ratings.length || 0;
-
-//     // res.status(200).json(avgOfRatings);
-//     res.status(200).json(snap.val());
-//   });
-// }
