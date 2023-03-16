@@ -68,6 +68,12 @@ export type Client = {
   created_mm_dd_yyyy: string
 }
 
+export type Theme = {
+  id: number
+  name: string
+  company: number
+}
+
 export type StyleKey = 'white' | 'basic'
 
 export type UserForm = {

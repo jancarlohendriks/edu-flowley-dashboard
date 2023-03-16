@@ -6,18 +6,43 @@ import BaseButtons from './BaseButtons'
 import CardBoxModal from './CardBoxModal'
 import { GetServerSideProps, GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 
-const TableSampleClients = () => {
+const TablePodcasts = () => {
   // const { clients } = useSampleThemes()
   const clients = [
     {
-      id: 19,
-      name: 'verantwoord-thuiszitten',
-      company: 2,
+      id: 1,
+      theme: 'studie-prive-balans',
+      avgRating: 3.5,
     },
     {
-      id: 11,
-      name: 'Arbeidsvoorwaardengesprek',
-      company: 1,
+      id: 2,
+      theme: 'prestatiedruk',
+      avgRating: 4,
+    },
+    {
+      id: 3,
+      theme: 'timemanagement',
+      avgRating: 4,
+    },
+    {
+      id: 4,
+      theme: 'keuzevrijheid',
+      avgRating: 4,
+    },
+    {
+      id: 5,
+      theme: 'verbindende-communicatie',
+      avgRating: 3.5,
+    },
+    {
+      id: 6,
+      theme: 'ritme-en-structuur',
+      avgRating: 5,
+    },
+    {
+      id: 7,
+      theme: 'slaap',
+      avgRating: 5,
     },
   ]
 
@@ -41,14 +66,14 @@ const TableSampleClients = () => {
         <thead>
           <tr>
             <th>Theme</th>
-            <th>Views</th>
+            <th>Rating</th>
           </tr>
         </thead>
         <tbody>
-          {clientsPaginated.map((client: Theme) => (
+          {clientsPaginated.map((client: { id: number; theme: string; avgRating: number }) => (
             <tr key={client.id}>
-              <td data-label="Name">{client.name}</td>
-              <td data-label="Company">{client.company}</td>
+              <td data-label="Name">{client.theme}</td>
+              <td data-label="Company">{client.avgRating}</td>
             </tr>
           ))}
         </tbody>
@@ -87,4 +112,4 @@ const TableSampleClients = () => {
 //   }
 // }
 
-export default TableSampleClients
+export default TablePodcasts

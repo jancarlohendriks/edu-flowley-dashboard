@@ -8,6 +8,9 @@ import CardBox from '../components/CardBox'
 import TableSampleClients from '../components/TableSampleClients'
 import { getPageTitle } from '../config'
 import LayoutTest from '../layouts/Test'
+import Link from 'next/link'
+import { colorsText } from '../colors'
+import BaseIcon from '../components/BaseIcon'
 
 const Dashboard = () => {
   return (
@@ -21,30 +24,58 @@ const Dashboard = () => {
         </SectionTitleLineWithButton>
 
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 mb-6">
-          <CardBoxWidget icon={mdiEye} iconColor="info" number={512} label="Visitors" />
-          <CardBoxWidget
-            icon={mdiPodcast}
-            iconColor="info"
-            number={3.5}
-            numberSuffix=" / 5"
-            label="Podcast ratings"
-          />
-          <CardBoxWidget
-            icon={mdiWeightLifter}
-            iconColor="info"
-            number={2}
-            numberSuffix=" / 5"
-            label="Exercise ratings"
-          />
+          <CardBoxWidget icon={mdiEye} iconColor="info" number={512} label="Platform Views" />
         </div>
 
-        <SectionTitleLineWithButton icon={mdiBookshelf} title="Themes">
+        <SectionTitleLineWithButton icon={mdiBookshelf} title="Theme views">
           &nbsp;
         </SectionTitleLineWithButton>
 
         <CardBox hasTable>
           <TableSampleClients />
         </CardBox>
+
+        <br />
+        <br />
+
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 mb-6">
+          <Link href="/podcasts">
+            <CardBox>
+              <div className="flex items-center justify-between">
+                <div>
+                  <h3 className="text-lg leading-tight text-gray-500 dark:text-slate-400">
+                    Podcast ratings
+                  </h3>
+                </div>
+                <BaseIcon
+                  path={mdiPodcast}
+                  size="48"
+                  w=""
+                  h="h-16"
+                  className={colorsText['info']}
+                />
+              </div>
+            </CardBox>
+          </Link>
+          <Link href="/exercises">
+            <CardBox>
+              <div className="flex items-center justify-between">
+                <div>
+                  <h3 className="text-lg leading-tight text-gray-500 dark:text-slate-400">
+                    Exercise ratings
+                  </h3>
+                </div>
+                <BaseIcon
+                  path={mdiWeightLifter}
+                  size="48"
+                  w=""
+                  h="h-16"
+                  className={colorsText['info']}
+                />
+              </div>
+            </CardBox>
+          </Link>
+        </div>
       </SectionMain>
     </>
   )

@@ -1,5 +1,4 @@
 /* eslint @typescript-eslint/no-var-requires: "off" */
-// const { GoogleAuth } = require('google-auth-library')
 const { BetaAnalyticsDataClient } = require('@google-analytics/data')
 
 const file = require('@/lib/credentials.json')
@@ -32,6 +31,4 @@ export default async function handler(req, res) {
     })
     .then((res) => res[0].rows)
   res.status(200).json({ response })
-  // const test = process.env.GA_PRIVATE_KEY
-  // res.status(200).send({ file })
 }

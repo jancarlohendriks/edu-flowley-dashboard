@@ -11,6 +11,16 @@ export const useSampleClients = () => {
   }
 }
 
+export const useSampleThemes = () => {
+  const { data, error } = useSWR('/admin-one-react-tailwind/data-sources/themes.json', fetcher)
+
+  return {
+    clients: data?.data ?? [],
+    isLoading: !error && !data,
+    isError: error,
+  }
+}
+
 export const useSampleTransactions = () => {
   const { data, error } = useSWR('/admin-one-react-tailwind/data-sources/history.json', fetcher)
 

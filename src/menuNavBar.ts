@@ -10,6 +10,7 @@ import {
   mdiThemeLightDark,
   mdiGithub,
   mdiVuejs,
+  mdiHome,
 } from '@mdi/js'
 import { MenuNavBarItem } from './interfaces'
 
@@ -62,9 +63,13 @@ const menuNavBar: MenuNavBarItem[] = [
   //   ],
   // },
   {
+    icon: mdiHome,
+    label: 'Home',
+    href: '/',
+  },
+  {
     icon: mdiThemeLightDark,
     label: 'Light/Dark',
-    isDesktopNoLabel: true,
     isToggleLightDark: true,
   },
   // {
