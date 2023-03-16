@@ -43,7 +43,7 @@ const TableSampleClients = ({ clients }: any) => {
           </tr>
         </thead>
         <tbody>
-          {clientsPaginated.map((client: any) => (
+          {clientsPaginated?.map((client: any) => (
             <tr key={client.id}>
               <td data-label="Name">{client.theme}</td>
               <td data-label="Company">{client.views}</td>
