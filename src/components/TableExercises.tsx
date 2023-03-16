@@ -4,47 +4,48 @@ import { Theme } from '../interfaces'
 import BaseButton from './BaseButton'
 import BaseButtons from './BaseButtons'
 import CardBoxModal from './CardBoxModal'
-import { GetServerSideProps, GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 
-const TableExercises = () => {
+const TableExercises = ({ clients }: any) => {
   // const { clients } = useSampleThemes()
-  const clients = [
-    {
-      id: 1,
-      theme: 'eat-the-frog',
-      avgRating: 3,
-    },
-    {
-      id: 2,
-      theme: 'de-80-60-40-regel',
-      avgRating: 4.5,
-    },
-    {
-      id: 3,
-      theme: 'Ademhalingsoefening',
-      avgRating: 5,
-    },
-    {
-      id: 4,
-      theme: 'ochtend-routine',
-      avgRating: 5,
-    },
-    {
-      id: 5,
-      theme: 'dopamine-detox',
-      avgRating: 5,
-    },
-    {
-      id: 6,
-      theme: 'even-stilstaan',
-      avgRating: 5,
-    },
-    {
-      id: 7,
-      theme: 'het-fietsstuur',
-      avgRating: 4,
-    },
-  ]
+  // const clients = [
+  //   {
+  //     id: 1,
+  //     theme: 'eat-the-frog',
+  //     avgRating: 3,
+  //   },
+  //   {
+  //     id: 2,
+  //     theme: 'de-80-60-40-regel',
+  //     avgRating: 4.5,
+  //   },
+  //   {
+  //     id: 3,
+  //     theme: 'Ademhalingsoefening',
+  //     avgRating: 5,
+  //   },
+  //   {
+  //     id: 4,
+  //     theme: 'ochtend-routine',
+  //     avgRating: 5,
+  //   },
+  //   {
+  //     id: 5,
+  //     theme: 'dopamine-detox',
+  //     avgRating: 5,
+  //   },
+  //   {
+  //     id: 6,
+  //     theme: 'even-stilstaan',
+  //     avgRating: 5,
+  //   },
+  //   {
+  //     id: 7,
+  //     theme: 'het-fietsstuur',
+  //     avgRating: 4,
+  //   },
+  // ]
+
+  clients.sort((a, b) => b.avgRating - a.avgRating)
 
   const perPage = 5
 
@@ -100,16 +101,5 @@ const TableExercises = () => {
     </>
   )
 }
-
-// export const getServerSideProps: GetServerSideProps = async () => {
-//   const res = await fetch('/api/views-theme')
-//   const posts: Object = await res.json()
-//   console.log(posts)
-//   return {
-//     props: {
-//       posts,
-//     },
-//   }
-// }
 
 export default TableExercises

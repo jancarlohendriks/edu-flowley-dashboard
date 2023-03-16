@@ -11,8 +11,16 @@ import LayoutTest from '../layouts/Test'
 import Link from 'next/link'
 import { colorsText } from '../colors'
 import BaseIcon from '../components/BaseIcon'
+import { GetServerSideProps, GetServerSidePropsContext } from 'next'
 
-const Dashboard = () => {
+const Dashboard = ({ views, themes }: any) => {
+  // const ratings = Object.values(themes.response).map((theme: any) => ({
+  //   theme: theme.dimensionValues[0].value,
+  //   views: theme.metricValues[0].value,
+  // }))
+
+  console.log(themes)
+
   return (
     <>
       <Head>
@@ -24,7 +32,12 @@ const Dashboard = () => {
         </SectionTitleLineWithButton>
 
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 mb-6">
-          <CardBoxWidget icon={mdiEye} iconColor="info" number={512} label="Platform Views" />
+          <CardBoxWidget
+            icon={mdiEye}
+            iconColor="info"
+            number={views.views}
+            label="Platform Views"
+          />
         </div>
 
         <SectionTitleLineWithButton icon={mdiBookshelf} title="Theme views">
@@ -32,7 +45,8 @@ const Dashboard = () => {
         </SectionTitleLineWithButton>
 
         <CardBox hasTable>
-          <TableSampleClients />
+          <TableSampleClients clients={themes.themes} />
+          {/* <TableSampleClients /> */}
         </CardBox>
 
         <br />
@@ -83,6 +97,23 @@ const Dashboard = () => {
 
 Dashboard.getLayout = function getLayout(page: ReactElement) {
   return <LayoutTest>{page}</LayoutTest>
+}
+
+export const getServerSideProps: GetServerSideProps = async (
+  context: GetServerSidePropsContext
+) => {
+  const v = await fetch(`http://${context.req.headers.host}/api/views-platform`)
+  const views: Object = await v.json()
+
+  const t = await fetch(`http://${context.req.headers.host}/api/views-theme`)
+  const themes: Object = await t.json()
+
+  return {
+    props: {
+      views,
+      themes,
+    },
+  }
 }
 
 export default Dashboard

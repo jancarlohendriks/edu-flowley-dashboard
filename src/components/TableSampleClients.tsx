@@ -3,23 +3,23 @@ import { useSampleThemes } from '../hooks/sampleData'
 import { Theme } from '../interfaces'
 import BaseButton from './BaseButton'
 import BaseButtons from './BaseButtons'
-import CardBoxModal from './CardBoxModal'
-import { GetServerSideProps, GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 
-const TableSampleClients = () => {
+const TableSampleClients = ({ clients }: any) => {
   // const { clients } = useSampleThemes()
-  const clients = [
-    {
-      id: 19,
-      name: 'verantwoord-thuiszitten',
-      company: 2,
-    },
-    {
-      id: 11,
-      name: 'Arbeidsvoorwaardengesprek',
-      company: 1,
-    },
-  ]
+  // const clients = [
+  //   {
+  //     id: 19,
+  //     name: 'verantwoord-thuiszitten',
+  //     company: 2,
+  //   },
+  //   {
+  //     id: 11,
+  //     name: 'Arbeidsvoorwaardengesprek',
+  //     company: 1,
+  //   },
+  // ]
+
+  clients.sort((a, b) => b.company - a.company)
 
   const perPage = 5
 
@@ -45,10 +45,10 @@ const TableSampleClients = () => {
           </tr>
         </thead>
         <tbody>
-          {clientsPaginated.map((client: Theme) => (
+          {clientsPaginated.map((client: any) => (
             <tr key={client.id}>
-              <td data-label="Name">{client.name}</td>
-              <td data-label="Company">{client.company}</td>
+              <td data-label="Name">{client.theme}</td>
+              <td data-label="Company">{client.views}</td>
             </tr>
           ))}
         </tbody>
@@ -67,24 +67,10 @@ const TableSampleClients = () => {
               />
             ))}
           </BaseButtons>
-          {/* <small className="mt-6 md:mt-0">
-            Page {currentPage + 1} of {numPages}
-          </small> */}
         </div>
       </div>
     </>
   )
 }
-
-// export const getServerSideProps: GetServerSideProps = async () => {
-//   const res = await fetch('/api/views-theme')
-//   const posts: Object = await res.json()
-//   console.log(posts)
-//   return {
-//     props: {
-//       posts,
-//     },
-//   }
-// }
 
 export default TableSampleClients

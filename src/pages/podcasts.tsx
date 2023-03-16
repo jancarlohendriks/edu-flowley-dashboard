@@ -1,15 +1,15 @@
-import { mdiChartTimelineVariant, mdiPodcast, mdiWeightLifter, mdiEye, mdiBookshelf } from '@mdi/js'
+import { mdiPodcast } from '@mdi/js'
 import Head from 'next/head'
 import type { ReactElement } from 'react'
 import SectionMain from '../components/SectionMain'
 import SectionTitleLineWithButton from '../components/SectionTitleLineWithButton'
-import CardBoxWidget from '../components/CardBoxWidget'
 import CardBox from '../components/CardBox'
 import TablePodcasts from '../components/TablePodcasts'
 import { getPageTitle } from '../config'
 import LayoutTest from '../layouts/Test'
+import { GetServerSideProps, GetServerSidePropsContext } from 'next'
 
-const Podcasts = () => {
+const Podcasts = ({ posts }) => {
   return (
     <>
       <Head>
@@ -21,7 +21,7 @@ const Podcasts = () => {
         </SectionTitleLineWithButton>
 
         <CardBox hasTable>
-          <TablePodcasts />
+          <TablePodcasts clients={posts} />
         </CardBox>
       </SectionMain>
     </>
@@ -30,6 +30,19 @@ const Podcasts = () => {
 
 Podcasts.getLayout = function getLayout(page: ReactElement) {
   return <LayoutTest>{page}</LayoutTest>
+}
+
+export const getServerSideProps: GetServerSideProps = async (
+  context: GetServerSidePropsContext
+) => {
+  const res = await fetch(`http://${context.req.headers.host}/api/rating-exercises?entity=fontys`)
+  const posts: Object = await res.json()
+
+  return {
+    props: {
+      posts,
+    },
+  }
 }
 
 export default Podcasts

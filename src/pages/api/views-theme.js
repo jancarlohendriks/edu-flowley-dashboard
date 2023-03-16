@@ -30,5 +30,10 @@ export default async function handler(req, res) {
       },
     })
     .then((res) => res[0].rows)
-  res.status(200).json({ response })
+
+  const themes = Object.values(response).map((theme) => ({
+    theme: theme.dimensionValues[0].value,
+    views: theme.metricValues[0].value,
+  }))
+  res.status(200).json({ themes })
 }

@@ -16,9 +16,9 @@ export default async function handler(req, res) {
       const entity = snap.val()[req.query.entity]
       const allRatings = Object.values(entity.ratings)
       const ratingsByGroup = groupItemsByToolId(allRatings)
-
       const ratings = Object.entries(ratingsByGroup)
         .map((theme) => ({
+          id: theme[0],
           theme: theme[0],
           avgRating: calcAverage(getGrades(theme[1])),
         }))

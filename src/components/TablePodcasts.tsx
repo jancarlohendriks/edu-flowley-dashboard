@@ -6,45 +6,47 @@ import BaseButtons from './BaseButtons'
 import CardBoxModal from './CardBoxModal'
 import { GetServerSideProps, GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 
-const TablePodcasts = () => {
+const TablePodcasts = ({ clients }: any) => {
   // const { clients } = useSampleThemes()
-  const clients = [
-    {
-      id: 1,
-      theme: 'studie-prive-balans',
-      avgRating: 3.5,
-    },
-    {
-      id: 2,
-      theme: 'prestatiedruk',
-      avgRating: 4,
-    },
-    {
-      id: 3,
-      theme: 'timemanagement',
-      avgRating: 4,
-    },
-    {
-      id: 4,
-      theme: 'keuzevrijheid',
-      avgRating: 4,
-    },
-    {
-      id: 5,
-      theme: 'verbindende-communicatie',
-      avgRating: 3.5,
-    },
-    {
-      id: 6,
-      theme: 'ritme-en-structuur',
-      avgRating: 5,
-    },
-    {
-      id: 7,
-      theme: 'slaap',
-      avgRating: 5,
-    },
-  ]
+  // const clients = [
+  //   {
+  //     id: 1,
+  //     theme: 'studie-prive-balans',
+  //     avgRating: 3.5,
+  //   },
+  //   {
+  //     id: 2,
+  //     theme: 'prestatiedruk',
+  //     avgRating: 4,
+  //   },
+  //   {
+  //     id: 3,
+  //     theme: 'timemanagement',
+  //     avgRating: 4,
+  //   },
+  //   {
+  //     id: 4,
+  //     theme: 'keuzevrijheid',
+  //     avgRating: 4,
+  //   },
+  //   {
+  //     id: 5,
+  //     theme: 'verbindende-communicatie',
+  //     avgRating: 3.5,
+  //   },
+  //   {
+  //     id: 6,
+  //     theme: 'ritme-en-structuur',
+  //     avgRating: 5,
+  //   },
+  //   {
+  //     id: 7,
+  //     theme: 'slaap',
+  //     avgRating: 5,
+  //   },
+  // ]
+
+  clients.sort((a, b) => b.avgRating - a.avgRating)
 
   const perPage = 5
 
@@ -100,16 +102,5 @@ const TablePodcasts = () => {
     </>
   )
 }
-
-// export const getServerSideProps: GetServerSideProps = async () => {
-//   const res = await fetch('/api/views-theme')
-//   const posts: Object = await res.json()
-//   console.log(posts)
-//   return {
-//     props: {
-//       posts,
-//     },
-//   }
-// }
 
 export default TablePodcasts
