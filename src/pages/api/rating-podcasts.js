@@ -1,25 +1,9 @@
 /* eslint @typescript-eslint/no-var-requires: "off" */
 import admin from '@/lib/firebase'
+import { groupItemsByThemeId } from '@/lib/groupItemsByThemeId'
 
 const getGrades = (list) => Object.values(list).map((item) => item.grade)
-
 const calcAverage = (list) => list.reduce((a, b) => a + b, 0) / list.length || 0
-
-const groupItemsByThemeId = (list) =>
-  list.reduce((groups, item) => {
-    const themeId = groups[item.themeId] || []
-    themeId.push(item)
-    groups[item.themeId] = themeId
-    return groups
-  }, {})
-
-const groupItemsByToolId = (list) =>
-  list.reduce((groups, item) => {
-    const toolId = groups[item.toolId] || []
-    toolId.push(item)
-    groups[item.toolId] = toolId
-    return groups
-  }, {})
 
 export default async function handler(req, res) {
   try {

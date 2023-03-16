@@ -1,47 +1,32 @@
 /* eslint @typescript-eslint/no-var-requires: "off" */
 import admin from '@/lib/firebase'
+import { groupItemsByToolId } from '@/lib/groupItemsByToolId'
+
+const getGrades = (list) => Object.values(list).map((item) => item.grade)
+const calcAverage = (list) => list.reduce((a, b) => a + b, 0) / list.length || 0
 
 export default async function handler(req, res) {
-  const db = admin.database()
-  const ref = db.ref('tools')
+  try {
+    const db = admin.database()
+    const ref = db.ref('entities')
 
-  ref.once('value', (snap) => {
-    // const objectMap = (obj, fn) =>
-    //   Object.fromEntries(
-    //     Object.entries(obj).map(([k, v], i) => [k, fn(v, k, i)])
-    //   );
-    // const list = ref.
-    // const list = Object.entries(snap.val()).map((tool) => tool);
-    // res.status(200).send(list);
-    // const list = [...snap.val()];
-    const tools = Object.values(snap.val()).map((tool) => ({
-      title: tool.title,
-      subtitle: tool.subtitle,
-      rating: tool.averageRating,
-      intensity: tool.intensity,
-      theme: tool.themeId,
-      duration: tool.duration,
-      imageURL: tool.imageURL,
-    }))
-    res.status(200).json(tools)
-  })
+    if (!req.query.entity) res.status(400).end()
 
-  // const que = query(ref(db.ref("/")))
+    await ref.once('value', (snap) => {
+      const entity = snap.val()[req.query.entity]
+      const allRatings = Object.values(entity.ratings)
+      const ratingsByGroup = groupItemsByToolId(allRatings)
 
-  // get(child)
+      const ratings = Object.entries(ratingsByGroup)
+        .map((theme) => ({
+          theme: theme[0],
+          avgRating: calcAverage(getGrades(theme[1])),
+        }))
+        .filter((theme) => theme.theme !== 'undefined')
 
-  // ref.once(
-  //   "value",
-  //   (snapshot) => {
-  //     const data = snapshot.val();
-  //     // const exercises = data.tools;
-
-  //     res.status(200).send(data);
-  //     console.log(data);
-  //   },
-  //   (error) => {
-  //     res.status(200).json({ error });
-  //     console.error(error);
-  //   }
-  // );
+      res.status(200).json(ratings)
+    })
+  } catch (e) {
+    res.status(400).end()
+  }
 }
