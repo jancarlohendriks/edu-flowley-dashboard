@@ -1,11 +1,11 @@
-// import {query, get} from "firebase"
-import admin from "@/lib/firebase";
+/* eslint @typescript-eslint/no-var-requires: "off" */
+import admin from '@/lib/firebase'
 
 export default async function handler(req, res) {
-  const db = admin.database();
-  const ref = db.ref("tools");
+  const db = admin.database()
+  const ref = db.ref('tools')
 
-  ref.once("value", (snap) => {
+  ref.once('value', (snap) => {
     // const objectMap = (obj, fn) =>
     //   Object.fromEntries(
     //     Object.entries(obj).map(([k, v], i) => [k, fn(v, k, i)])
@@ -22,9 +22,9 @@ export default async function handler(req, res) {
       theme: tool.themeId,
       duration: tool.duration,
       imageURL: tool.imageURL,
-    }));
-    res.status(200).json(tools);
-  });
+    }))
+    res.status(200).json(tools)
+  })
 
   // const que = query(ref(db.ref("/")))
 
