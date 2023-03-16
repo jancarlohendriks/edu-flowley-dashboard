@@ -4,7 +4,7 @@
 const nextConfig = {
   // basePath: '/admin-one-react-tailwind',
   env: {
-    GOOGLE_APPLICATION_CREDENTIALS: process.env.GOOGLE_APPLICATION_CREDENTIALS,
+    GOOGLE_APPLICATION_CREDENTIALS: '/flowley-test-880d49cc6785.json',
   },
   // async redirects() {
   //   return [
