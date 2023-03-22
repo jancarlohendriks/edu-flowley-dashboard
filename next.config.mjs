@@ -8,9 +8,10 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   // basePath: '/admin-one-react-tailwind',
-  // env: {
-  //   GOOGLE_APPLICATION_CREDENTIALS: 'flowley-test-880d49cc6785.json',
-  // },
+  env: {
+    CLIENT_EMAIL: process.env.CLIENT_EMAIL,
+    PRIVATE_KEY: process.env.PRIVATE_KEY,
+  },
   // async redirects() {
   //   return [
   //     {
