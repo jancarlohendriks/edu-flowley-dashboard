@@ -4,12 +4,12 @@ const file = require('@/lib/credentials.json')
 
 const analyticsDataClient = new BetaAnalyticsDataClient({
   credentials: {
-    client_email: process.env.CLIENT_EMAIL,
-    private_key: process.env.PRIVATE_KEY,
+    client_email: file.client_email,
+    private_key: process.env.PRIVATE,
   },
 })
 
-// console.log(process.env.PRIVATE)
+console.log(process.env.PRIVATE)
 
 const PROPERTY_ID = '353724991'
 const startDate = '7daysAgo'
