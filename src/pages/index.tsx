@@ -19,7 +19,7 @@ const Dashboard = ({ views, themes }: any) => {
   //   views: theme.metricValues[0].value,
   // }))
 
-  console.log(process.env.CLIENT_EMAIL)
+  console.log(themes)
 
   return (
     <>
@@ -28,7 +28,7 @@ const Dashboard = ({ views, themes }: any) => {
       </Head>
       <SectionMain>
         <SectionTitleLineWithButton icon={mdiChartTimelineVariant} title="Overview" main>
-          Last {process.env.CLIENT_EMAIL} days
+          Last 30 days
         </SectionTitleLineWithButton>
 
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 mb-6">
