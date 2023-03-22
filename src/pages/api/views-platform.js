@@ -5,7 +5,7 @@ const file = require('@/lib/credentials.json')
 const analyticsDataClient = new BetaAnalyticsDataClient({
   credentials: {
     client_email: file.client_email,
-    private_key: process.env.PRIVATE,
+    private_key: file.private_key,
   },
 })
 
