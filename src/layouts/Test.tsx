@@ -1,12 +1,10 @@
-import React, { ReactNode, useEffect } from 'react'
+import React, { ReactNode } from 'react'
 import { mdiForwardburger, mdiBackburger, mdiMenu, mdiHome } from '@mdi/js'
 import menuNavBar from '../menuNavBar'
 import BaseIcon from '../components/BaseIcon'
 import NavBar from '../components/NavBar'
 import NavBarItemPlain from '../components/NavBarItemPlain'
-import FooterBar from '../components/FooterBar'
-import { setUser } from '../stores/mainSlice'
-import { useAppDispatch, useAppSelector } from '../stores/hooks'
+import { useAppSelector } from '../stores/hooks'
 import Link from 'next/link'
 
 type Props = {
@@ -24,7 +22,7 @@ export default function LayoutTest({ entity, children }: Props) {
       >
         <NavBar menu={menuNavBar} className={'ml-60 lg:ml-0'}>
           <NavBarItemPlain display="lg:flex">
-            <Link href="/">
+            <Link href={`/${entity}`}>
               <NavBarItemPlain display="lg:flex">
                 <BaseIcon path={mdiHome} className="mr-2" size="20" />
                 {entity}

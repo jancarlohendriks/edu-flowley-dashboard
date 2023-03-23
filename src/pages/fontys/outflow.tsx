@@ -1,17 +1,16 @@
 import { mdiOpenInNew } from '@mdi/js'
 import Head from 'next/head'
-import type { ReactElement } from 'react'
-import SectionMain from '../components/SectionMain'
-import SectionTitleLineWithButton from '../components/SectionTitleLineWithButton'
-import CardBox from '../components/CardBox'
-import TableOutflow from '../components/TableOutflow'
-import { getPageTitle } from '../config'
-import LayoutTest from '../layouts/Test'
+import SectionMain from '@/components/SectionMain'
+import SectionTitleLineWithButton from '@/components/SectionTitleLineWithButton'
+import CardBox from '@/components/CardBox'
+import TableOutflow from '@/components/TableOutflow'
+import { getPageTitle } from '@/config'
+import LayoutTest from '@/layouts/Test'
 import { GetServerSideProps, GetServerSidePropsContext } from 'next'
 
-const Outflow = ({ posts, subdomain }) => {
+const Outflow = ({ posts, entity }) => {
   return (
-    <LayoutTest entity={subdomain}>
+    <LayoutTest entity={entity}>
       <Head>
         <title>{getPageTitle('Outflow')}</title>
       </Head>
@@ -31,15 +30,14 @@ const Outflow = ({ posts, subdomain }) => {
 export const getServerSideProps: GetServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
-  const subdomain = context.req?.headers?.host?.split('.')[0]
-
+  const entity = context.resolvedUrl.match('([^/]+)').pop()
   const res = await fetch(`http://${process.env.HOST}/api/outflow`)
   const posts: any = await res.json()
 
   return {
     props: {
       posts,
-      subdomain,
+      entity,
     },
   }
 }

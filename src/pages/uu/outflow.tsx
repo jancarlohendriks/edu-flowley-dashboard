@@ -1,26 +1,26 @@
-import { mdiWeightLifter } from '@mdi/js'
+import { mdiOpenInNew } from '@mdi/js'
 import Head from 'next/head'
 import SectionMain from '@/components/SectionMain'
 import SectionTitleLineWithButton from '@/components/SectionTitleLineWithButton'
 import CardBox from '@/components/CardBox'
-import TableExercises from '@/components/TableExercises'
+import TableOutflow from '@/components/TableOutflow'
 import { getPageTitle } from '@/config'
 import LayoutTest from '@/layouts/Test'
 import { GetServerSideProps, GetServerSidePropsContext } from 'next'
 
-const Exercises = ({ exercises, entity }) => {
+const Outflow = ({ posts, entity }) => {
   return (
     <LayoutTest entity={entity}>
       <Head>
-        <title>{getPageTitle('Exercises')}</title>
+        <title>{getPageTitle('Outflow')}</title>
       </Head>
       <SectionMain>
-        <SectionTitleLineWithButton icon={mdiWeightLifter} title="Exercises">
+        <SectionTitleLineWithButton icon={mdiOpenInNew} title="Outflow">
           &nbsp;
         </SectionTitleLineWithButton>
 
         <CardBox hasTable>
-          <TableExercises clients={exercises} />
+          <TableOutflow clients={posts.outflow} />
         </CardBox>
       </SectionMain>
     </LayoutTest>
@@ -31,15 +31,15 @@ export const getServerSideProps: GetServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
   const entity = context.resolvedUrl.match('([^/]+)').pop()
-  const res = await fetch(`http://${process.env.HOST}/api/rating-exercises?entity=fontys`)
-  const exercises: any = await res.json()
+  const res = await fetch(`http://${process.env.HOST}/api/outflow`)
+  const posts: any = await res.json()
 
   return {
     props: {
-      exercises,
+      posts,
       entity,
     },
   }
 }
 
-export default Exercises
+export default Outflow

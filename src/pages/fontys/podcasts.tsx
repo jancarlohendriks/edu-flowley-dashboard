@@ -1,17 +1,17 @@
 import { mdiPodcast } from '@mdi/js'
 import Head from 'next/head'
 import type { ReactElement } from 'react'
-import SectionMain from '../components/SectionMain'
-import SectionTitleLineWithButton from '../components/SectionTitleLineWithButton'
-import CardBox from '../components/CardBox'
-import TablePodcasts from '../components/TablePodcasts'
-import { getPageTitle } from '../config'
-import LayoutTest from '../layouts/Test'
+import SectionMain from '@/components/SectionMain'
+import SectionTitleLineWithButton from '@/components/SectionTitleLineWithButton'
+import CardBox from '@/components/CardBox'
+import TablePodcasts from '@/components/TablePodcasts'
+import { getPageTitle } from '@/config'
+import LayoutTest from '@/layouts/Test'
 import { GetServerSideProps, GetServerSidePropsContext } from 'next'
 
-const Podcasts = ({ posts, subdomain }) => {
+const Podcasts = ({ podcasts, entity }) => {
   return (
-    <LayoutTest entity={subdomain}>
+    <LayoutTest entity={entity}>
       <Head>
         <title>{getPageTitle('Podcasts')}</title>
       </Head>
@@ -21,7 +21,7 @@ const Podcasts = ({ posts, subdomain }) => {
         </SectionTitleLineWithButton>
 
         <CardBox hasTable>
-          <TablePodcasts clients={posts} />
+          <TablePodcasts clients={podcasts} />
         </CardBox>
       </SectionMain>
     </LayoutTest>
@@ -31,15 +31,14 @@ const Podcasts = ({ posts, subdomain }) => {
 export const getServerSideProps: GetServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
-  const subdomain = context.req?.headers?.host?.split('.')[0]
-
-  const res = await fetch(`http://${process.env.HOST}/api/rating-podcasts?entity=fontys`)
-  const posts: any = await res.json()
+  const entity = context.resolvedUrl.match('([^/]+)').pop()
+  const res = await fetch(`http://${process.env.HOST}/api/rating-podcasts?entity=${entity}`)
+  const podcasts: any = await res.json()
 
   return {
     props: {
-      posts,
-      subdomain,
+      podcasts,
+      entity,
     },
   }
 }
