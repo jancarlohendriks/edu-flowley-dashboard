@@ -62,11 +62,11 @@ const menuNavBar: MenuNavBarItem[] = [
   //     },
   //   ],
   // },
-  {
-    icon: mdiHome,
-    label: 'Home',
-    href: '/',
-  },
+  // {
+  //   icon: mdiHome,
+  //   label: 'Home',
+  //   href: '/',
+  // },
   {
     icon: mdiThemeLightDark,
     label: 'Light/Dark',

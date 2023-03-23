@@ -9,9 +9,9 @@ import { getPageTitle } from '../config'
 import LayoutTest from '../layouts/Test'
 import { GetServerSideProps, GetServerSidePropsContext } from 'next'
 
-const Podcasts = ({ posts }) => {
+const Podcasts = ({ posts, subdomain }) => {
   return (
-    <>
+    <LayoutTest entity={subdomain}>
       <Head>
         <title>{getPageTitle('Podcasts')}</title>
       </Head>
@@ -24,23 +24,22 @@ const Podcasts = ({ posts }) => {
           <TablePodcasts clients={posts} />
         </CardBox>
       </SectionMain>
-    </>
+    </LayoutTest>
   )
-}
-
-Podcasts.getLayout = function getLayout(page: ReactElement) {
-  return <LayoutTest>{page}</LayoutTest>
 }
 
 export const getServerSideProps: GetServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
-  const res = await fetch(`http://${context.req.headers.host}/api/rating-exercises?entity=fontys`)
+  const subdomain = context.req?.headers?.host?.split('.')[0]
+
+  const res = await fetch(`http://${process.env.HOST}/api/rating-podcasts?entity=fontys`)
   const posts: any = await res.json()
 
   return {
     props: {
       posts,
+      subdomain,
     },
   }
 }

@@ -9,6 +9,7 @@ const nextConfig = {
   },
   // basePath: '/admin-one-react-tailwind',
   env: {
+    HOST: process.env.HOST,
     CLIENT_EMAIL: process.env.CLIENT_EMAIL,
     PRIVATE_KEY: process.env.PRIVATE_KEY,
   },

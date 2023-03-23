@@ -7,12 +7,14 @@ import NavBarItemPlain from '../components/NavBarItemPlain'
 import FooterBar from '../components/FooterBar'
 import { setUser } from '../stores/mainSlice'
 import { useAppDispatch, useAppSelector } from '../stores/hooks'
+import Link from 'next/link'
 
 type Props = {
+  entity: string
   children: ReactNode
 }
 
-export default function LayoutTest({ children }: Props) {
+export default function LayoutTest({ entity, children }: Props) {
   const darkMode = useAppSelector((state) => state.style.darkMode)
 
   return (
@@ -21,10 +23,14 @@ export default function LayoutTest({ children }: Props) {
         className={`pt-14 min-h-screen w-screen transition-position lg:w-auto bg-gray-50 dark:bg-slate-800 dark:text-slate-100`}
       >
         <NavBar menu={menuNavBar} className={'ml-60 lg:ml-0'}>
-          {/* <NavBarItemPlain display="lg:flex">HEllo</NavBarItemPlain> */}
-          {/* <NavBarItemPlain display="lg:flex">
-            <BaseIcon path={mdiHome} size="24" />
-          </NavBarItemPlain> */}
+          <NavBarItemPlain display="lg:flex">
+            <Link href="/">
+              <NavBarItemPlain display="lg:flex">
+                <BaseIcon path={mdiHome} className="mr-2" size="20" />
+                {entity}
+              </NavBarItemPlain>
+            </Link>
+          </NavBarItemPlain>
         </NavBar>
         {children}
       </div>

@@ -9,16 +9,16 @@ export default async function handler(req, res) {
   try {
     const db = admin.database()
     const ref = db.ref('entities')
-
-    if (!req.query.entity) res.status(400).end()
+    const queryEntity = req.query.entity || 'fontys'
 
     await ref.once('value', (snap) => {
-      const entity = snap.val()[req.query.entity]
+      const entity = snap.val()[queryEntity]
       const allRatings = Object.values(entity.ratings)
       const ratingsByGroup = groupItemsByThemeId(allRatings)
 
       const ratings = Object.entries(ratingsByGroup)
         .map((theme) => ({
+          id: theme[0],
           theme: theme[0],
           avgRating: calcAverage(getGrades(theme[1])),
         }))
