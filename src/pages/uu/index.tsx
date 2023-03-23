@@ -6,7 +6,7 @@ const Fontys = (props: any) => {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const entity = 'fontys'
+  const entity = 'uu'
 
   const v = await fetch(`http://${process.env.HOST}/api/views-platform`)
   const views: any = await v.json()
@@ -17,7 +17,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
   const e = await fetch(`http://${process.env.HOST}/api/engagement`)
   const engagement: any = await e.json()
 
-  const t = await fetch(`http://${process.env.HOST}/api/views-theme`)
+  const t = await fetch(`http://${process.env.HOST}/api/views-theme?entity=${entity}`)
   const themes: any = await t.json()
 
   return {

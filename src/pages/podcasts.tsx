@@ -1,26 +1,27 @@
-import { mdiWeightLifter } from '@mdi/js'
+import { mdiPodcast } from '@mdi/js'
 import Head from 'next/head'
+import type { ReactElement } from 'react'
 import SectionMain from '@/components/SectionMain'
 import SectionTitleLineWithButton from '@/components/SectionTitleLineWithButton'
 import CardBox from '@/components/CardBox'
-import TableExercises from '@/components/TableExercises'
+import TablePodcasts from '@/components/TablePodcasts'
 import { getPageTitle } from '@/config'
 import LayoutTest from '@/layouts/Test'
 import { GetServerSideProps, GetServerSidePropsContext } from 'next'
 
-const Exercises = ({ exercises, entity }) => {
+const Podcasts = ({ podcasts, entity }) => {
   return (
     <LayoutTest entity={entity}>
       <Head>
-        <title>{getPageTitle('Exercises')}</title>
+        <title>{getPageTitle('Podcasts')}</title>
       </Head>
       <SectionMain>
-        <SectionTitleLineWithButton icon={mdiWeightLifter} title="Exercises">
+        <SectionTitleLineWithButton icon={mdiPodcast} title="Podcasts">
           &nbsp;
         </SectionTitleLineWithButton>
 
         <CardBox hasTable>
-          <TableExercises clients={exercises} />
+          <TablePodcasts clients={podcasts} />
         </CardBox>
       </SectionMain>
     </LayoutTest>
@@ -29,15 +30,15 @@ const Exercises = ({ exercises, entity }) => {
 
 export const getServerSideProps: GetServerSideProps = async (ctx: GetServerSidePropsContext) => {
   const entity = ctx.query.entity
-  const res = await fetch(`http://${process.env.HOST}/api/rating-exercises?entity=${entity}`)
-  const exercises: any = await res.json()
+  const res = await fetch(`http://${process.env.HOST}/api/rating-podcasts?entity=${entity}`)
+  const podcasts: any = await res.json()
 
   return {
     props: {
-      exercises,
+      podcasts,
       entity,
     },
   }
 }
 
-export default Exercises
+export default Podcasts

@@ -70,7 +70,7 @@ const Dashboard = ({ props }: any) => {
         <br />
 
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 mb-6">
-          <Link href={`${router.asPath}/podcasts`}>
+          <Link href={`/podcasts?entity=${entity}`}>
             <CardBox>
               <div className="flex items-center justify-between">
                 <div>
@@ -88,7 +88,7 @@ const Dashboard = ({ props }: any) => {
               </div>
             </CardBox>
           </Link>
-          <Link href={`${router.asPath}/exercises`}>
+          <Link href={`/exercises?entity=${entity}`}>
             <CardBox>
               <div className="flex items-center justify-between">
                 <div>
@@ -106,7 +106,7 @@ const Dashboard = ({ props }: any) => {
               </div>
             </CardBox>
           </Link>
-          <Link href={`${router.asPath}/outflow`}>
+          <Link href={`/outflow?entity=${entity}`}>
             <CardBox>
               <div className="flex items-center justify-between">
                 <div>

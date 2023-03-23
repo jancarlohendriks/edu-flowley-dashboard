@@ -14,6 +14,7 @@ const endDate = 'today'
 const metric = 'screenPageViews'
 
 export default async function handler(req, res) {
+  const entity = req.query.entity
   const response = await analyticsDataClient
     .runReport({
       property: `properties/${PROPERTY_ID}`,
