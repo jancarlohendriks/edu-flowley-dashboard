@@ -34,7 +34,7 @@ const TableOutflow = ({ clients }: any) => {
           {clientsPaginated.map((client: { id: number; link: string; count: number }) => (
             <tr key={client.id}>
               <td data-label="Name">{client.link}</td>
-              <td data-label="Company">{client.count}</td>
+              <td data-label="Count">{client.count}</td>
             </tr>
           ))}
         </tbody>

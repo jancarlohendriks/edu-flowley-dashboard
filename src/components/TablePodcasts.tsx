@@ -71,7 +71,7 @@ const TablePodcasts = ({ clients }: any) => {
           {clientsPaginated.map((client: { id: number; theme: string; avgRating: number }) => (
             <tr key={client.id}>
               <td data-label="Name">{client.theme}</td>
-              <td data-label="Company">{client.avgRating}</td>
+              <td data-label="Count">{client.avgRating}</td>
             </tr>
           ))}
         </tbody>
