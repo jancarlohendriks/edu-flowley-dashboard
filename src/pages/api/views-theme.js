@@ -14,19 +14,41 @@ const endDate = 'today'
 const metric = 'screenPageViews'
 
 export default async function handler(req, res) {
-  const entity = req.query.entity
+  const entity = req.query.entity || ''
+
   const response = await analyticsDataClient
     .runReport({
       property: `properties/${PROPERTY_ID}`,
       dimensions: [{ name: 'pagePathPlusQueryString' }],
-      metrics: [{ name: metric }],
       dateRanges: [{ startDate: startDate, endDate: endDate }],
+      metrics: [{ name: metric }],
       dimensionFilter: {
-        filter: {
-          fieldName: 'pagePathPlusQueryString',
-          stringFilter: { matchType: 'CONTAINS', value: 'thema' },
+        andGroup: {
+          expressions: [
+            {
+              filter: {
+                fieldName: 'pagePathPlusQueryString',
+                stringFilter: { matchType: 'CONTAINS', value: 'thema' },
+              },
+            },
+            {
+              filter: {
+                fieldName: 'hostName',
+                stringFilter: {
+                  matchType: 'CONTAINS',
+                  value: entity,
+                },
+              },
+            },
+          ],
         },
       },
+      // dimensionFilter: {
+      //   filter: {
+      //     fieldName: 'pagePathPlusQueryString',
+      //     stringFilter: { matchType: 'CONTAINS', value: 'thema' },
+      //   },
+      // },
     })
     .then((res) => res[0].rows)
 

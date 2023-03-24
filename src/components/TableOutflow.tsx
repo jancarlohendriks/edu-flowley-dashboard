@@ -11,8 +11,6 @@ const TableOutflow = ({ clients }: any) => {
 
   const clientsPaginated = clients?.slice(perPage * currentPage, perPage * (currentPage + 1))
 
-  console.log(clientsPaginated)
-
   const numPages = clients?.length / perPage
 
   const pagesList = []

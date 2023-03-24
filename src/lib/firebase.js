@@ -6,7 +6,7 @@ try {
     credential: admin.credential.cert(fireConfig),
     databaseURL: 'https://flowley-test-default-rtdb.europe-west1.firebasedatabase.app',
   })
-  // console.log("Initialized.");
+  console.log('Firebase DB Initialized.')
 } catch (error) {
   /*
    * We skip the "already exists" message which is
