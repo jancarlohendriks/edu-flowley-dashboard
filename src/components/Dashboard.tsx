@@ -1,6 +1,8 @@
 import {
   mdiChartTimelineVariant,
+  mdiGlasses,
   mdiPodcast,
+  mdiListBoxOutline,
   mdiWeightLifter,
   mdiEye,
   mdiBookshelf,
@@ -29,7 +31,7 @@ const Dashboard = ({ props }: any) => {
         <title>{getPageTitle(`Dashboard ${entity}`)}</title>
       </Head>
       <SectionMain>
-        <SectionTitleLineWithButton icon={mdiChartTimelineVariant} title="Overview" main>
+        <SectionTitleLineWithButton icon={mdiListBoxOutline} title="Overview" main>
           Last 30 days
         </SectionTitleLineWithButton>
 
@@ -56,7 +58,7 @@ const Dashboard = ({ props }: any) => {
           />
         </div>
 
-        <SectionTitleLineWithButton icon={mdiBookshelf} title="Views per theme">
+        <SectionTitleLineWithButton icon={mdiEye} title="Views per theme">
           &nbsp;
         </SectionTitleLineWithButton>
 

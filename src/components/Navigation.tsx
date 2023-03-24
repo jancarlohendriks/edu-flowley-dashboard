@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
-import BaseIcon from './BaseIcon'
 import NavBarItemPlain from './NavBarItemPlain'
 import { mdiHome, mdiChartTimelineVariant } from '@mdi/js'
 import NavBar from '../components/NavBar'
 import menuNavBar from '../menuNavBar'
 import Link from 'next/link'
+import { LogoFontys } from './LogoFontys'
+import { LogoFlowley } from './LogoFlowley'
+import { LogoUu } from './LogoUu'
 
 type Props = {
   entity?: string
@@ -32,15 +34,16 @@ export default function Navitation({ entity }: Props) {
     >
       <NavBarItemPlain>
         <NavBarItemPlain>
-          <Link href="https://www.flowley.nl/">Flowley</Link>
+          <Link href="https://www.flowley.nl/">
+            <LogoFlowley />
+          </Link>
         </NavBarItemPlain>
         {entity && (
           <>
             <span>|</span>
             <NavBarItemPlain>
               <Link href={`/${entity}`}>
-                {/* <BaseIcon path={mdiHome} className="mr-2" size="20" /> */}
-                {entity}
+                {entity === 'fontys' ? <LogoFontys /> : entity === 'uu' ? <LogoUu /> : entity}
               </Link>
             </NavBarItemPlain>
           </>
