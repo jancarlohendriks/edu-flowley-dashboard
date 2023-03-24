@@ -7,6 +7,7 @@ export const LogoUu = () => {
       style={{
         position: 'relative',
         height: '2.5rem',
+        top: '.1rem',
       }}
     >
       <svg height="100%" viewBox="0 0 158 54" fill="none" xmlns="http://www.w3.org/2000/svg">

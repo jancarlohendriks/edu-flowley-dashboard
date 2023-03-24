@@ -15,7 +15,7 @@ const Outflow = ({ posts, entity }) => {
         <title>{getPageTitle('Outflow')}</title>
       </Head>
       <SectionMain>
-        <SectionTitleLineWithButton icon={mdiOpenInNew} title="Outflow clicks">
+        <SectionTitleLineWithButton icon={mdiOpenInNew} title="Outflow">
           &nbsp;
         </SectionTitleLineWithButton>
 

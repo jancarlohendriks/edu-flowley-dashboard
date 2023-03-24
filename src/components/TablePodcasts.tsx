@@ -63,7 +63,7 @@ const TablePodcasts = ({ clients }: any) => {
       <table>
         <thead>
           <tr>
-            <th>Theme</th>
+            <th>Podcast</th>
             <th>Rating</th>
           </tr>
         </thead>

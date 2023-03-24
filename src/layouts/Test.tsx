@@ -17,10 +17,12 @@ export default function LayoutTest({ entity, children }: Props) {
   const darkMode = useAppSelector((state) => state.style.darkMode)
   const [isAsideMobileExpanded, setIsAsideMobileExpanded] = useState(false)
 
+  const paddingTop = 'pt-24'
+
   return (
     <div className={`${darkMode ? 'dark' : ''} overflow-hidden lg:overflow-visible`}>
       <div
-        className={`pt-14 min-h-screen w-screen transition-position lg:w-auto bg-gray-50 dark:bg-slate-800 dark:text-slate-100`}
+        className={`${paddingTop} min-h-screen w-screen transition-position lg:w-auto bg-gray-50 dark:bg-slate-800 dark:text-slate-100`}
       >
         {/* <NavBar menu={menuNavBar} className={`${isAsideMobileExpanded ? 'ml-60 lg:ml-0' : ''}`}>
           <NavBarItemPlain display="lg:flex">

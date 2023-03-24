@@ -7,7 +7,7 @@ export const LogoFlowley = () => {
       style={{
         position: 'relative',
         height: '1.5rem',
-        top: '.2rem',
+        top: '.435rem',
       }}
     >
       <svg height="100%" viewBox="0 0 111 24" fill="none" xmlns="http://www.w3.org/2000/svg">

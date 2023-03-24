@@ -111,7 +111,7 @@ const Dashboard = ({ props }: any) => {
               <div className="flex items-center justify-between">
                 <div>
                   <h3 className="text-lg leading-tight text-gray-500 dark:text-slate-400">
-                    Outflow
+                    Outflow clicks
                   </h3>
                 </div>
                 <BaseIcon

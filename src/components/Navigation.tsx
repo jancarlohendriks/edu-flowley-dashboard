@@ -14,25 +14,27 @@ type Props = {
 
 export default function Navitation({ entity }: Props) {
   const [isAsideMobileExpanded, setIsAsideMobileExpanded] = useState(false)
+  const menu: any = [
+    {
+      icon: mdiHome,
+      label: 'Home',
+      href: '/',
+    },
+  ]
+
+  entity &&
+    menu.push({
+      icon: mdiChartTimelineVariant,
+      label: 'Dashboard',
+      href: `/${entity}`,
+    })
+
+  menu.push(...menuNavBar)
 
   return (
-    <NavBar
-      menu={[
-        {
-          icon: mdiHome,
-          label: 'Home',
-          href: '/',
-        },
-        {
-          icon: mdiChartTimelineVariant,
-          label: 'Dashboard',
-          href: `/${entity}`,
-        },
-        ...menuNavBar,
-      ]}
-      className={`${isAsideMobileExpanded ? 'ml-60 lg:ml-0' : ''}`}
-    >
+    <NavBar menu={menu} className={`${isAsideMobileExpanded ? 'ml-60 lg:ml-0' : ''}`}>
       <NavBarItemPlain>
+        {/* <div style={{ display: 'flex', paddingTop: '2rem' }}> */}
         <NavBarItemPlain>
           <Link href="https://www.flowley.nl/">
             <LogoFlowley />
@@ -40,7 +42,14 @@ export default function Navitation({ entity }: Props) {
         </NavBarItemPlain>
         {entity && (
           <>
-            <span>|</span>
+            <span
+              style={{
+                position: 'relative',
+                top: '.22rem',
+              }}
+            >
+              |
+            </span>
             <NavBarItemPlain>
               <Link href={`/${entity}`}>
                 {entity === 'fontys' ? <LogoFontys /> : entity === 'uu' ? <LogoUu /> : entity}
@@ -48,6 +57,7 @@ export default function Navitation({ entity }: Props) {
             </NavBarItemPlain>
           </>
         )}
+        {/* </div> */}
       </NavBarItemPlain>
     </NavBar>
   )
