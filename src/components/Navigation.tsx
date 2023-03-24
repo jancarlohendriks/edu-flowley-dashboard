@@ -25,7 +25,7 @@ export default function Navitation({ entity }: Props) {
   entity &&
     menu.push({
       icon: mdiChartTimelineVariant,
-      label: 'Dashboard',
+      label: `Dashboard ${entity.charAt(0).toUpperCase() + entity.slice(1)}`,
       href: `/${entity}`,
     })
 
@@ -46,6 +46,7 @@ export default function Navitation({ entity }: Props) {
               style={{
                 position: 'relative',
                 top: '.22rem',
+                color: 'inherit !important',
               }}
             >
               |

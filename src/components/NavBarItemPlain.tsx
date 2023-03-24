@@ -17,11 +17,12 @@ export default function NavBarItemPlain({
   const navBarItemLabelStyle = useAppSelector((state) => state.style.navBarItemLabelStyle)
   const navBarItemLabelHoverStyle = useAppSelector((state) => state.style.navBarItemLabelHoverStyle)
 
-  const classBase = 'items-center cursor-pointer dark:text-white dark:hover:text-slate-400'
-  const classAddon = `${display} ${navBarItemLabelStyle} ${navBarItemLabelHoverStyle} ${
-    useMargin ? 'my-2 mx-3' : 'py-2 px-3'
-  }`
-  // const classAddon = `${display} ${navBarItemLabelStyle} ${useMargin ? 'my-2 mx-3' : 'py-2 px-3'}`
+  // const classBase = 'items-center cursor-pointer dark:text-white dark:hover:text-slate-400'
+  const classBase = 'items-center cursor-pointer dark:text-white'
+  // const classAddon = `${display} ${navBarItemLabelStyle} ${navBarItemLabelHoverStyle} ${
+  //   useMargin ? 'my-2 mx-3' : 'py-2 px-3'
+  // }`
+  const classAddon = `${display} ${navBarItemLabelStyle} ${useMargin ? 'my-2 mx-3' : 'py-2 px-3'}`
 
   return (
     <div className={`${classBase} ${classAddon}`} onClick={onClick}>
