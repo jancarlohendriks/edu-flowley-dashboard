@@ -32,5 +32,4 @@ yarn-error.log*
 .vercel
 
 # secrets
-credentials.json
-flowley-test-880d49cc6785.json
+/secrets
