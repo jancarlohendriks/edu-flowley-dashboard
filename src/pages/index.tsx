@@ -11,14 +11,15 @@ import {
 import Head from 'next/head'
 import SectionMain from '@/components/SectionMain'
 import SectionTitleLineWithButton from '@/components/SectionTitleLineWithButton'
-import CardBoxWidget from '@/components/CardBoxWidget'
 import CardBox from '@/components/CardBox'
-import TableSampleClients from '@/components/TableSampleClients'
 import { getPageTitle } from '@/config'
-import LayoutTest from '@/layouts/Test'
 import Link from 'next/link'
 import { colorsText } from '@/colors'
 import BaseIcon from '@/components/BaseIcon'
+import NavBar from '../components/NavBar'
+import NavBarItemPlain from '../components/NavBarItemPlain'
+import menuNavBar from '../menuNavBar'
+import Navitation from '@/components/Navigation'
 
 const Home = () => {
   return (
@@ -27,10 +28,14 @@ const Home = () => {
         className={`pt-14 min-h-screen w-screen transition-position lg:w-auto bg-gray-50 dark:bg-slate-800 dark:text-slate-100`}
       >
         <Head>
-          <title>{getPageTitle('Dashboard')}</title>
+          <title>{getPageTitle('Home')}</title>
         </Head>
+        <Navitation />
+        {/* <NavBar menu={menuNavBar} className={'ml-60 lg:ml-0'}>
+          <NavBarItemPlain display="lg:flex">Flowley</NavBarItemPlain>
+        </NavBar> */}
         <SectionMain>
-          <SectionTitleLineWithButton icon={mdiChartTimelineVariant} title="Institutions" main>
+          <SectionTitleLineWithButton icon={mdiChartTimelineVariant} title="Partners" main>
             &nbsp;
           </SectionTitleLineWithButton>
 

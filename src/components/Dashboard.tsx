@@ -26,7 +26,7 @@ const Dashboard = ({ props }: any) => {
   return (
     <LayoutTest entity={entity}>
       <Head>
-        <title>{getPageTitle('Dashboard')}</title>
+        <title>{getPageTitle(`Dashboard ${entity}`)}</title>
       </Head>
       <SectionMain>
         <SectionTitleLineWithButton icon={mdiChartTimelineVariant} title="Overview" main>
@@ -56,7 +56,7 @@ const Dashboard = ({ props }: any) => {
           />
         </div>
 
-        <SectionTitleLineWithButton icon={mdiBookshelf} title="Theme views">
+        <SectionTitleLineWithButton icon={mdiBookshelf} title="Views per theme">
           &nbsp;
         </SectionTitleLineWithButton>
 

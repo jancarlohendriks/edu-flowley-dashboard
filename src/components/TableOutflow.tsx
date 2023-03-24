@@ -3,16 +3,10 @@ import BaseButton from './BaseButton'
 import BaseButtons from './BaseButtons'
 
 const TableOutflow = ({ clients }: any) => {
-  // clients?.sort((a: any, b: any) => b.avgRating - a.avgRating)
-
   const perPage = 5
-
   const [currentPage, setCurrentPage] = useState(0)
-
   const clientsPaginated = clients?.slice(perPage * currentPage, perPage * (currentPage + 1))
-
   const numPages = clients?.length / perPage
-
   const pagesList = []
 
   for (let i = 0; i < numPages; i++) {
@@ -32,7 +26,7 @@ const TableOutflow = ({ clients }: any) => {
           {clientsPaginated.map((client: { id: number; link: string; count: number }) => (
             <tr key={client.id}>
               <td data-label="Name">{client.link}</td>
-              <td data-label="Count">{client.count}</td>
+              <td data-label="Clicks">{client.count}</td>
             </tr>
           ))}
         </tbody>
@@ -51,9 +45,6 @@ const TableOutflow = ({ clients }: any) => {
               />
             ))}
           </BaseButtons>
-          {/* <small className="mt-6 md:mt-0">
-            Page {currentPage + 1} of {numPages}
-          </small> */}
         </div>
       </div>
     </>
