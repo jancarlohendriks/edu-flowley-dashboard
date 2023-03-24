@@ -19,11 +19,9 @@ import LayoutTest from '@/layouts/Test'
 import Link from 'next/link'
 import { colorsText } from '@/colors'
 import BaseIcon from '@/components/BaseIcon'
-import { useRouter } from 'next/router'
 
 const Dashboard = ({ props }: any) => {
   const { views, bounce, engagement, themes, entity } = props
-  const router = useRouter()
 
   return (
     <LayoutTest entity={entity}>
