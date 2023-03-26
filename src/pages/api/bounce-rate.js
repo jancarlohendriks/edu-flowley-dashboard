@@ -3,8 +3,8 @@ const { BetaAnalyticsDataClient } = require('@google-analytics/data')
 
 const analyticsDataClient = new BetaAnalyticsDataClient({
   credentials: {
-    client_email: process.env.CLIENT_EMAIL,
-    private_key: process.env.PRIVATE_KEY,
+    client_email: process.env.GSA_CLIENT_EMAIL,
+    private_key: process.env.GSA_PRIVATE_KEY,
   },
 })
 

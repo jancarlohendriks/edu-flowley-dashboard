@@ -18,7 +18,7 @@ const TableOutflow = ({ clients }: any) => {
       <table>
         <thead>
           <tr>
-            <th>Outflow Link</th>
+            <th>Link</th>
             <th>Clicks</th>
           </tr>
         </thead>

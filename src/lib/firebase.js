@@ -1,10 +1,13 @@
 import admin from 'firebase-admin'
-import { fireConfig } from './fireConfig'
 
 try {
   admin.initializeApp({
-    credential: admin.credential.cert(fireConfig),
-    databaseURL: 'https://flowley-test-default-rtdb.europe-west1.firebasedatabase.app',
+    credential: admin.credential.cert({
+      project_id: process.env.FIREBASE_PROJECT_ID,
+      private_key: process.env.FIREBASE_PRIVATE_KEY,
+      client_email: process.env.FIREBASE_CLIENT_EMAIL,
+    }),
+    databaseURL: process.env.FIREBASE_DB_URL,
   })
   console.log('Firebase DB Initialized.')
 } catch (error) {

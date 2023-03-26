@@ -45,7 +45,7 @@ export default function Navitation({ entity }: Props) {
             <span
               style={{
                 position: 'relative',
-                top: '.22rem',
+                // top: '.22rem',
                 color: 'inherit !important',
               }}
             >
