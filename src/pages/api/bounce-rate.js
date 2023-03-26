@@ -8,7 +8,7 @@ const analyticsDataClient = new BetaAnalyticsDataClient({
   },
 })
 
-const PROPERTY_ID = '353724991'
+const PROPERTY_ID = process.env.GSA_PROPERTY_ID
 const startDate = '7daysAgo'
 const endDate = 'today'
 const metric = 'bounceRate'

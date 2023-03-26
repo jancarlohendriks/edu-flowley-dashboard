@@ -10,6 +10,7 @@ const nextConfig = {
   // basePath: '/admin-one-react-tailwind',
   env: {
     HOST: process.env.HOST,
+    GSA_PROPERTY_ID: process.env.GSA_PROPERTY_ID,
     GSA_CLIENT_EMAIL: process.env.GSA_CLIENT_EMAIL,
     GSA_PRIVATE_KEY: process.env.GSA_PRIVATE_KEY,
     FIREBASE_PROJECT_ID: process.env.FIREBASE_PROJECT_ID,
